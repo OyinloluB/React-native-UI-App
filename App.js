@@ -1,19 +1,29 @@
-import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { StyleSheet, View, Platform } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+import Info from "./screens/Info";
 import Intro from "./screens/Intro";
 
+const Stack = createStackNavigator();
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Intro />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen
+          options={{
+            headerShown: false,
+          }}
+          name="Intro"
+          component={Intro}
+        />
+        <Stack.Screen
+          options={{
+            headerShown: false,
+          }}
+          name="Info"
+          component={Info}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    paddingTop: Platform.OS === "android" ? 40 : 0,
-    marginLeft: 25,
-  },
-});
